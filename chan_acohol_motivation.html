@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.jpeg" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chan alcohol motivation</title>
+    <style>
+        html, body {
+            height: 100%;
+            background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain;
+        }
+
+        #volumeButton {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        #volumeButton img {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <video id="myVideo" src="video.mp4" autoplay loop muted playsinline></video>
+
+    <!-- Volume Button -->
+    <button id="volumeButton">
+        <img id="volumeIcon" src="audio_off.svg" alt="Volume">
+    </button>
+
+    <script>
+        const video = document.getElementById('myVideo');
+        const volumeButton = document.getElementById('volumeButton');
+        const volumeIcon = document.getElementById('volumeIcon');
+
+        let isMuted = true; // Initial state
+
+        volumeButton.addEventListener('click', () => {
+            isMuted = !isMuted; // Toggle mute state
+            video.muted = isMuted;
+
+            // Change icon based on mute state
+            volumeIcon.src = isMuted ? 'audio_off.svg' : 'audio_on.svg';
+        });
+    </script>
+</body>
+</html>
